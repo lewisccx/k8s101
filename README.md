@@ -76,15 +76,19 @@ e.g.
 
 ### see services
 kubectl get services
+kubectl describe service [serviceName]
 
 ### create deployment
 kubectl create deployment [deploymentName] --image=[imageName]
 touch [configfile.yaml]
 kubectl apply -f [configfile.yaml]
+kubectl delete -f [configfile.yaml]
 
 ### see all deployment
 kubectl get deployment
-
+*get updated config of yaml file with status spec*
+kubectl get deployment [deploymentName] -o yaml > [outputFileName]
+ kubectl get deployment nginx-deployment -o yaml > nginx-deployment-result.yaml
 ###  see replicaset
 *managing the replica of a pod*
 kubectl get replicaset
@@ -101,3 +105,9 @@ kubectl logs [podName]
 ### get into shell of pod
 kubectl exec -it [podName] bash
 exit
+
+### delete pod using yaml file
+kubectl delete -f nginx-deployment.yaml
+
+### delete service using yaml file
+kubectl delete -f nginx-service.yaml
